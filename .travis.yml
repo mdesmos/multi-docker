@@ -4,7 +4,8 @@ services:
     - docker
 
 before_install:
-    - docker build -t mdesmos/react-test -f ./client/Dockerfile.dev ./client
+#    - docker build -t mdesmos/react-test -f ./client/Dockerfile.dev ./client
+    - docker run -e CI=true USERNAME/react-test npm test
 
 script:
     - docker run mdesmos/react-test npm test -- --coverage
