@@ -6,7 +6,7 @@ before_install:
     - docker build -t mdesmos/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-    - docker run -e CI=true USERNAME/react-test npm test
+    - docker run mdesmos/react-test npm test -- --coverage
 
 after_success:
     - docker build - t mdesmos/multi-client ./client
@@ -20,5 +20,3 @@ after_success:
     - docker push mdesmos/multi-nginx
     - docker push mdesmos/multi-server
     - docker push mdesmos/multi-worker
-      
-     
